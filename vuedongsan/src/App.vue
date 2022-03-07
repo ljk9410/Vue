@@ -1,44 +1,33 @@
 <template>
+
   <!-- modal -->
-  <div class="black-bg" v-if='modalState === 1' @click='modalState = 0'>
-    <div class="white-bg" >
-      <h4>상세페이지</h4>
-      <p>상세페이지 내용</p>
-    </div>
-  </div>
+  <Modal @closeModal='modalState = 0' :rooms='rooms' :modalState='modalState' :userClicked='userClicked'/>
   
-  
-  
+  <Discount/>
+
   <div class='menu'>
     <a v-for='(a, i) in menu' :key="i">{{ a }}</a>
   </div>
 
 
-
-  <!--   
-    <div v-for='(a, i) in products' :key='i'>
-      <h4>{{ a }}</h4>
-      <p>50만원</p>
-    </div> 
-  -->
-  <div v-for='(a,i) in rooms' :key="i">
-    <img class='room-img' :src="a.image">
-    <h4>{{ a.title }}</h4>
-    <p>{{ a.content }}</p>
-    <p>{{ a.price }}</p>
-  </div>
+  <Card @openModal='modalState = 1; userClicked = $event' v-for='(a, i) in rooms' :key='i' :a='a'/>
+  
 </template>
 
 
 
 <script>
 import roomData from './data.js';
+import Discount from './components/Discount.vue';
+import Modal from './components/Modal.vue';
+import Card from './components/Card.vue';
 
 export default {
   name: 'App',
   data() {
     return {
       rooms: roomData,
+      userClicked: 0,
       modalState: 0,
       menu: ['Home', 'Shop', 'About'],
       products: ['역삼동원룸', '천호동원룸', '마포구원룸'],
@@ -50,7 +39,9 @@ export default {
     }
   },
   components: {
-
+    Discount,
+    Modal,
+    Card,
   }
 }
 </script>
@@ -64,6 +55,13 @@ body {
 
 div {
   box-sizing: border-box;
+}
+
+.discount {
+  background: #eee;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
 }
 
 .black-bg {
