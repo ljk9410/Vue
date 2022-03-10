@@ -33,6 +33,12 @@ export default {
         modalState: Number,
         userClicked: Number,
     },
+    beforeUpdate() {
+        if (this.month === 2) {
+            alert('다른 숫자를 입력하세요');
+            this.month = 1;
+        }
+    }
 }
 </script>
 

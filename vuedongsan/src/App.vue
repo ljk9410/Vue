@@ -68,9 +68,9 @@ export default {
   },
 
   mounted() {
-    setTimeout(() => {
-      this.discountState = 0;
-    }, 2000);
+    // setTimeout(() => {
+    //   this.discountState = 0;
+    // }, 2000);
   },
   components: {
     Discount,
