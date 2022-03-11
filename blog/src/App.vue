@@ -8,10 +8,10 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contents</a>
+            <a class="nav-link" href="/list">Contents</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Profile</a>
@@ -21,17 +21,11 @@
     </div>
   </nav>
 
-  <div class="container mt-4">
-    <h5>Vue로 만든 Blog</h5>
-    <p>Vue로 제작했습니다.</p>
-  </div>
-
-  <List :blogData="blogData"/>
+  <router-view :blogData="blogData"></router-view>
 
 </template>
 
 <script>
-import List from './components/List.vue';
 import blogData from './data.js';
 
 export default {
@@ -42,7 +36,6 @@ export default {
     }
   },
   components: {
-    List,
   }
 }
 </script>

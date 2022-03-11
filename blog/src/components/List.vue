@@ -1,9 +1,8 @@
 <template>
-    <div class='listContainer' v-for="(a, i) in blogData" :key='i'>
+    <div @click="$router.push(`/detail/${a.id}`)" class='listContainer' v-for="(a, i) in blogData" :key='i'>
         <h4>{{ a.title }}</h4>
         <p>{{ a.title }}</p>
-        <small>{{ a.date}}</small> <br>
-        <small>{{ a.number }}</small>
+        <small>{{ a.date }}</small> <br>
     </div>
 </template>
 
